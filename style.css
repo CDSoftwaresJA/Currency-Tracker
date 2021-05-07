@@ -1,0 +1,42 @@
+body{
+    padding: 0;
+    width:100%;
+    max-width:500%;
+    margin:100px auto;
+    text-align:center;
+    font-family: Arial,Arial, Helvetica,sans-serif;      
+    
+}
+
+
+
+h2{
+    text-transform: uppercase;
+    letter-spacing: 2px;    
+    color:#d63031;
+}
+
+input,
+select
+    {
+        margin-bottom:15px;
+        font-size:16px;        
+        box-sizing: content-box;
+        border:1px solid #d63031;
+        border-radius: 4px;
+    }
+
+
+select{
+    margin-bottom:15px;
+    font-size:16px;        
+    box-sizing: content-box;
+    border:1px solid #d63031;
+    border-radius: 4px;
+}
+
+span{
+    color:black;
+    font-size:2em;
+    font-weight:900;
+}

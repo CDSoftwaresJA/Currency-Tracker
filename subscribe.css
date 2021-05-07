@@ -1,0 +1,150 @@
+.body2{
+    margin:0;
+    padding:0;
+}
+
+.body2{
+    padding: 3px;;
+    margin:0;
+    box-sizing:border-box;
+}
+
+.mainlayout{
+    min-height:100vh;
+    position: relative;
+    background-color:#d63031;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    max-width:890px;
+    padding:5px 20px;
+    
+}
+
+.sbform{
+    position:relative;
+    display:flex;
+    margin:0px 0;
+}
+
+.imgform{
+    flex-basis:50%;
+    padding:100px 50px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border:1px solid #fff;
+}
+
+.imgform img{
+    max-width:100%;
+
+}
+
+.contentform{
+    flex-basis: 50%;
+    padding:3em 3.5em;
+    background: #fff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow:15px 19px 45px -12px rgba(159,18,10,0.9);
+}
+
+.contentform form{
+    margin:30px;
+    margin-bottom: 30px;    
+}
+
+.contentform h2{
+    font-weight:600px;
+    font-size:25px;
+    line-height:35px;
+    margin-bottom: 5px;
+    color: #3b3663;    
+}
+
+.contentform p{
+    font-size:16px;
+    line-height:25px;
+    color: #6666; 
+}
+
+.contentform input[type="email"]
+{
+    margin-bottom:15px;
+    font-size:16px;
+    color:#999;
+    text-align:left;
+    width:100%;
+    padding:14px 20px;
+    box-sizing: border-box;
+    border:1px solid #d63031;
+    border-radius: 4px;
+}
+
+.contentform label
+{
+    margin-bottom:15px;
+    font-size:16px;
+    text-align:left;
+    width:100%;
+    padding:14px 20px;
+    border-radius: 4px;
+}
+
+.contentform select
+{
+    margin-bottom:15px;
+    font-size:16px;        
+    box-sizing: border-box;
+    border:1px solid #d63031;
+    border-radius: 4px;
+}
+
+
+.contentform button{
+    font-size:18px;
+    color:#fff;
+    background:#d63031;
+    border:none;
+    padding:14px 15px;
+    font-weight:500;
+    transition:0.5s ease;
+    border-radius:8px;
+    width:100%;
+}
+
+.contentform button:hover{
+    border:1px solid #d63031;
+    background:none;
+    color:#d63031;    
+}
+
+@media(max-width: 700px){
+    .container{
+        max-width:668px;
+        margin:0 auto;
+    }
+
+    .sbform{
+        flex-direction:column;  
+    }
+
+    .imgform{
+        flex-basis:100%;
+        padding:40px 20px;
+        border-bottom-left-radius: 0;
+    }
+
+    .contentform{
+        flex-basis:100%;
+        padding:1em 1.5em;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+   
+}
+

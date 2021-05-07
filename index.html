@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Convert</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="subscribe.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="" href="Subscribe.html">
+</head>
+<body>
+    <div class="border">
+    <h2> Foreign Exchange </h2>
+    <div>
+        <input type="number">
+        <select>
+            <!-- <option value="currency">Currency</option> -->
+        </select>
+    </div>
+    <span>=</span>
+    <div>
+        <input type="number">
+        <select>
+            <!-- <option value="currency">Currency</option> -->
+        </select>
+    </div>
+</div>
+
+   &nbsp;
+
+
+<div class="body2">
+    <div class="mainlayout">
+        <div class="container">
+            <div class="sbform">
+                <div class="imgform">
+                    <img src="images/digitalmarket2.png">
+                </div>
+                <div class="contentform">
+                    <h4>Subscribe Now</h4>
+                    <p>Subscribe to get daily updates of any currency pair</p>
+
+                    <form id="frm1">
+                        <input type="email" id="Email" name="email" placeholder="Enter Your Email">
+                        <div>
+                           <label>Please Select Currency</label>
+                            <select id = "ddlview">
+                                <!-- <option value="currency">Currency</option> -->
+                            </select>
+                        </div>
+                        <div>
+                            <label>Please select Currency</label>
+                            <select id = "ddlviewby">
+                                <!-- <option value="currency">Currency</option> -->
+                            </select>
+                        </div>                        
+                        <button class="btn" type="submit" onclick="showAlert()"> Subscribe</button>
+                    
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+    
+    <script>       
+
+        function showAlert()
+        {            
+            var Email = document.getElementById('Email').value;
+            var e = document.getElementById("ddlview");
+            var f=document.getElementById("ddlviewby");
+            
+            if(name.length<1 && Email.length<1)            
+            {
+                alert("Please enter email");
+            }                
+             else
+             {
+                var struser= e.options[e.selectedIndex].text;
+                var stuser1 = f.options[f.selectedIndex].text;
+                var mytext= (`Please check ${Email} for updates from ${struser} to ${stuser1}`);
+                sendRequest(Email,struser,stuser1);
+                alert(mytext);
+              }                       
+                                            
+        }
+
+        function sendRequest(email,from,to){
+            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+            var theUrl = "https://4pltmq5ye1.execute-api.us-east-2.amazonaws.com/prod/subscribe";
+            xmlhttp.open("POST", theUrl);
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xmlhttp.send(JSON.stringify({
+		        "task":1,
+                "email":email,
+                "from" :from,
+                "to" : to
+            }));
+        }
+       
+        const select=document.querySelectorAll('select'); //representing a list of the documents elements
+        const input=document.querySelectorAll('input');
+        const API_URL= "http://api.exchangeratesapi.io/v1/latest?access_key=85d30cf5aaa9e89025dc47df626e8d64&format=1";
+        let html='';
+
+        async function currency(){
+            const res=await fetch(API_URL);
+            const data=await res.json();
+            const arrKeys = Object.keys(data.rates); //returning the rates
+            const rates=data.rates;
+            console.log(rates)    
+                 
+
+            arrKeys.map(item=>{
+                return html +=`<option value=${item}>${item}</option>`;
+            });
+            for(let i=0; i<select.length; i++)
+            {
+                select[i].innerHTML=html;
+            };
+
+            function convert(i,j)
+            {
+                input[i].value= input[j].value*rates[select[i].value]/rates[select[j].value];
+            }
+            
+            input[0].addEventListener('keyup',()=> convert(1,0));
+               
+
+            input[1].addEventListener('keyup',()=> convert(0,1));
+                
+
+
+            select[0].addEventListener('change',()=> convert(1,0)); 
+
+            select[1].addEventListener('change',()=> convert(0,1));
+
+        };
+        
+        currency();
+
+        
+    </script>
+        
+
+
+
+
+</body>
+</html>
